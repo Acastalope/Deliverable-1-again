@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class MyAssignment1 {
 
 	public static void main(String[] args) {
+		System.out.println("sample change");
+
 		// My first statement
 		
 		Scanner sc = new Scanner(System.in);       //declaration of sc of scanner type
@@ -32,21 +34,31 @@ public class MyAssignment1 {
 			System.out.println("Error");
 			return;
 		}
+		
+		boolean val = false;
+		val = check_digits(num1, num2, len1, len2);							
+		System.out.println("Final result of check : " + val);                          
+	}
+	
+	
+	
+	static boolean check_digits(int no1, int no2, int len1, int len2) {
 		int ct = 1;                //ct stands for the number of times the loop runs
 		int placevalue1 = 0;       //Initialization of placevalue1   
 		int placevalue2 = 0;       //Initialization of placevalue2  
-		int new_num1 = num1;  //Copy the value of num1 to new_num1
-		int new_num2 = num2;  //Copy the value of num2 to new_num2
+		int new_num1 = no1;  //Copy the value of no1 to new_num1
+		int new_num2 = no2;  //Copy the value of no2 to new_num2
 		int sum1_previous = 0;  //Variable to hold the sum of the digits of respective places
+		boolean ret_val = false;
 		
 		while(ct <= len1) {	//Loop to repeat len1 times
 			placevalue1 = new_num1%10; //Assigning of place values to placevalue1 one by one with each execution of the loop
 		    new_num1 = new_num1/10;  //Set new_num1 to hold the rest of the digits of number 1
-		    System.out.format("digit number %d of %d is : %d \n", ct, num1, placevalue1);
+		    System.out.format("digit number %d of %d is : %d \n", ct, no1, placevalue1);
 		    
 		    placevalue2 = new_num2%10;  //Assigning of place values to placevalue2 one by one with each execution of the loop
 		    new_num2 = new_num2/10; //Set new_num2 to hold the rest of the digits of number 2
-		    System.out.format("digit number %d of %d is : %d \n", ct, num2, placevalue2);
+		    System.out.format("digit number %d of %d is : %d \n", ct, no2, placevalue2);
 		    if(ct == 1) {  //Add up the value of the ones place  
 		    	sum1_previous = placevalue1 + placevalue2;
 		    	System.out.println("Sum of the digits at this stage is : " + sum1_previous);
@@ -55,14 +67,17 @@ public class MyAssignment1 {
 		    else if(sum1_previous == placevalue1 + placevalue2 ) { //If the previous sum is equal to the current sum, then the check will continue
 		    	ct = ct + 1;  //Loop will continue according to the number of digits in the number
 		    	System.out.println("Sum of the digits at this stage is : " + sum1_previous);
-		    	System.out.println("True");
+		    	//System.out.println("True");
+		    	ret_val = true;
+		    	
 		    	continue; //Will continue back to run the loop after condition check if true
 		    }
 		    else  //Will execute following if conditions are not met
 		    {
 		    	System.out.println("Sum of the digits at this stage is : " + (placevalue1 + placevalue2));
 		    	System.out.println("Sum of the digits at the previous stage was : " + sum1_previous);
-		    	System.out.println("False");
+		    	//System.out.println("False");
+		    	ret_val = false;
 		    	break;
 		    }
 		    	
@@ -70,6 +85,7 @@ public class MyAssignment1 {
 		    ct = ct + 1;
 		}
 		
+		return ret_val;
 	}
 
 }
