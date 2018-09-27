@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class MyAssignment1 {
 
 	public static void main(String[] args) {
-		System.out.println("sample change");
-
+		
 		// My first statement
 		
 		Scanner sc = new Scanner(System.in);       //declaration of sc of scanner type
